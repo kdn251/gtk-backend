@@ -79,6 +79,86 @@ struct _GtkPrinterCups
   gboolean remote;
   guint get_remote_ppd_poll;
   gint  get_remote_ppd_attempts;
+  
+  
+  /* Kevin's Code (Start) */
+  
+  gchar *document_format_default;
+  GList *document_format_supported;
+  
+  gchar *color_supported_default;
+  GList *color_supported;
+    
+  gchar *media_source_default;
+  GList *media_source_supported;  
+  
+  gint print_quality_default;
+  GList *print_quality_supported;
+  
+  gchar *printer_resolution_default;
+  GList *printer_resolution_supported;
+  
+  gchar *copies_default;
+  GList *copies_supported;
+  
+  gchar *media_type_default;
+  GList *media_type_supported;
+  
+  gint *pages_per_side_default;
+  GList *pages_per_side_supported;
+  
+  gchar *page_order_received_default;
+  GList *page_order_received_supported;
+  
+  
+  /* Kevin's Code (Marek's patch start) */
+  
+  gint  finishings_default;  
+  GList *finishings_supported;
+    
+  gchar *presentation_direction_number_up_default;
+  GList *presentation_direction_number_up_supported;
+  
+  gchar *page_delivery_default;
+  GList *page_delivery_supported;
+    
+  gchar *print_color_mode_default;
+  GList *print_color_mode_supported;
+  
+  gchar *print_content_optimize_default;
+  GList *print_content_optimize_supported;
+    
+  gchar *print_scaling_default;
+  GList *print_scaling_supported; 
+  
+  gchar *imposition_template_default;
+  GList *imposition_template_supported;
+  
+  gchar job_account_type_default;
+  GList *job_account_type_supported;
+  
+  gchar *job_delay_output_until_default;
+  GList *job_delay_output_until_supported;
+    
+  gchar *job_error_action_default;
+  GList *job_error_action_supported;
+  
+  gint force_front_side_default;
+  GList *force_front_side_suppported;
+  
+  gchar *print_rendering_intent_default;
+  GList *print_rendering_intent_supported;
+  
+  gchar *x_image_position_default;
+  GList *x_image_position_supported;
+  
+  gchar *y_image_position_default;
+  GList *y_image_position_supported;
+
+  /* Kevin's Code (Marek's patch end) */      
+  
+  /* Kevin's Code (End) */
+  
   GtkCupsConnectionTest *remote_cups_connection_test;
 #ifdef HAVE_COLORD
   CdClient     *colord_client;

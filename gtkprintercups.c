@@ -139,6 +139,80 @@ gtk_printer_cups_init (GtkPrinterCups *printer)
   printer->covers = NULL;
   printer->output_bin_default = NULL;
   printer->output_bin_supported = NULL;
+  
+  /* Kevin's Code (Start) */
+  
+  printer->document_format_default = NULL;
+  printer->document_format_supported = NULL;
+  
+  printer->color_supported_default = NULL;
+  printer->color_supported = NULL;
+  
+  printer->media_source_default = NULL;
+  printer->media_source_supported = NULL;
+  
+  printer->print_quality_default = 4;
+  printer->print_quality_supported = NULL;
+  
+  printer->printer_resolution_default = NULL;
+  printer->printer_resolution_supported = NULL;
+  
+  printer->copies_default = NULL;
+  printer->copies_supported = NULL;
+  
+  printer->media_type_default = NULL;
+  printer->media_type_supported = NULL;
+  
+  printer->pages_per_side_default = NULL;
+  printer->pages_per_side_supported = NULL;
+  
+  printer->finishings_default = 3;
+  printer->finishings_supported = NULL;
+  
+  printer->presentation_direction_number_up_default = NULL;
+  printer->presentation_direction_number_up_supported = NULL;
+  
+  printer->page_delivery_default = NULL;
+  printer->page_delivery_supported = NULL;
+  
+  printer->page_order_received_default = NULL;
+  printer->page_order_received_supported = NULL;
+  
+  printer->print_color_mode_default = NULL;
+  printer->print_color_mode_supported = NULL;
+  
+  printer->print_content_optimize_default = NULL;
+  printer->print_content_optimize_supported = NULL;
+  
+  printer->print_scaling_default = NULL;
+  printer->print_scaling_supported = NULL;
+  
+  printer->imposition_template_default = NULL;
+  printer->imposition_template_supported = NULL;
+  
+  printer->job_account_type_default = NULL;
+  printer->job_account_type_supported = NULL;
+  
+  printer->job_delay_output_until_default = NULL;
+  printer->job_delay_output_until_supported = NULL;
+  
+  printer->job_error_action_default = NULL;
+  printer->job_error_action_supported = NULL;
+  
+  printer->force_front_side_default = 67;
+  printer->force_front_side_suppported = NULL;
+  
+  printer->print_rendering_intent_default = NULL;
+  printer->print_rendering_intent_supported = NULL;
+  
+  printer->x_image_position_default = NULL;
+  printer->x_image_position_supported = NULL;
+  
+  printer->y_image_position_default = NULL;
+  printer->y_image_position_supported = NULL;
+  
+  /* Kevin's Code (End) */
+  
 }
 
 static void
@@ -194,6 +268,82 @@ gtk_printer_cups_finalize (GObject *object)
 
   g_free (printer->output_bin_default);
   g_list_free_full (printer->output_bin_supported, g_free);
+  
+  /* Kevin's Code (Start) */
+  
+  g_free (printer->document_format_default);
+  g_list_free_full (printer->document_format_supported, g_free);
+  
+  g_free (printer->color_supported_default);
+  g_list_free_full (printer->color_supported, g_free);
+  
+  g_free (printer->media_source_default);
+  g_list_free_full (printer->media_source_supported, g_free);
+  
+  g_list_free (printer->print_quality_supported);  
+  
+  g_free (printer->printer_resolution_default);
+  g_list_free_full (printer->printer_resolution_supported, g_free);
+  
+  g_free (printer->copies_default);
+  g_list_free_full (printer->copies_supported, g_free);
+  
+  g_free (printer->media_type_default);
+  g_list_free_full (printer->media_type_supported, g_free);
+  
+  g_free (printer->pages_per_side_default);
+  g_list_free_full (printer->pages_per_side_supported, g_free);
+  
+  /* Kevin's Code (Marek's patch start) */
+  
+  g_list_free (printer->finishings_supported);
+    
+  g_free (printer->page_delivery_default);
+  g_list_free_full (printer->page_delivery_supported, g_free); 
+  
+  g_free (printer->page_order_received_default);
+  g_list_free_full (printer->page_order_received_supported, g_free); 
+  
+  g_free (printer->presentation_direction_number_up_default);
+  g_list_free_full (printer->presentation_direction_number_up_supported, g_free);   
+  
+  g_free (printer->print_color_mode_default);
+  g_list_free_full (printer->print_color_mode_supported, g_free);         
+  
+  g_free (printer->print_content_optimize_default);
+  g_list_free_full (printer->print_content_optimize_supported, g_free);           
+
+  g_free (printer->print_scaling_default);
+  g_list_free_full (printer->print_scaling_supported, g_free);    
+  
+  g_free (printer->imposition_template_default);
+  g_list_free_full (printer->imposition_template_supported, g_free);
+  
+  g_free (printer->job_account_type_default);
+  g_list_free_full (printer->job_account_type_supported, g_free);
+  
+  g_free (printer->job_delay_output_until_default);
+  g_list_free_full (printer->job_delay_output_until_supported, g_free);
+  
+  g_free (printer->job_error_action_default);
+  g_list_free_full (printer->job_error_action_supported, g_free);  	
+  
+  g_free (printer->print_rendering_intent_default);
+  g_list_free_full (printer->print_rendering_intent_supported, g_free);  	  
+  
+  g_list_free (printer->print_rendering_intent_supported);
+  
+  g_free (printer->x_image_position_default);
+  g_list_free_full (printer->x_image_position_supported, g_free);  
+  	  
+  g_free (printer->y_image_position_default);
+  g_list_free_full (printer->y_image_position_supported, g_free);  	  
+  
+  /* Kevin's Code (Marek's patch end) */    
+  
+  /* Kevin's Code (End) */
+  
+  
 
   if (printer->get_remote_ppd_poll > 0)
     g_source_remove (printer->get_remote_ppd_poll);
